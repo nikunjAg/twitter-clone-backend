@@ -1,0 +1,1 @@
+1. Corrected the scrolling bug whhen navigating back from complete post page
