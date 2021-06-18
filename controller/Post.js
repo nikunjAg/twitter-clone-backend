@@ -85,6 +85,7 @@ exports.createPost = (req, res, next) => {
 	const { userId } = req;
 
 	const images = [];
+	console.log(req.files.images);
 	if (req.files && req.files.images) {
 		for (let image of req.files.images) {
 			images.push('/images/' + image.filename);
