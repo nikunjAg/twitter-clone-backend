@@ -39,7 +39,7 @@ const fileFilter = (req, file, cb) => {
 
 app.use((req, res, next) => {
 	const origin = req.get('origin');
-	if (whitelistedDomains.indexOf('origin') > -1) {
+	if (whitelistedDomains.indexOf(origin) > -1) {
 		res.setHeader('Access-Control-Allow-Origin', origin);
 	}
 	res.setHeader(
