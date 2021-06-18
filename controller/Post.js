@@ -85,7 +85,7 @@ exports.createPost = (req, res, next) => {
 	const { userId } = req;
 
 	const images = [];
-	console.log(req.files.images);
+
 	if (req.files && req.files.images) {
 		for (let image of req.files.images) {
 			images.push('/images/' + image.filename);
@@ -264,8 +264,10 @@ exports.quotePost = (req, res, next) => {
 	const { postId } = req.params;
 	const { userId } = req;
 	const images = [];
-	for (let image of req.files.images) {
-		images.push('/images/' + image.filename);
+	if (req.files && req.files.images) {
+		for (let image of req.files.images) {
+			images.push('/images/' + image.filename);
+		}
 	}
 
 	let createdQuote = null;
@@ -323,8 +325,10 @@ exports.replyPost = (req, res, next) => {
 	const { content } = req.body;
 	const { userId } = req;
 	const images = [];
-	for (let image of req.files.images) {
-		images.push('/images/' + image.filename);
+	if (req.files && req.files.images) {
+		for (let image of req.files.images) {
+			images.push('/images/' + image.filename);
+		}
 	}
 
 	let replyPost = null;
