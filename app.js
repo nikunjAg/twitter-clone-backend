@@ -10,7 +10,7 @@ const userRoutes = require('./routes/user');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
-const MONGO_URI = `mongodb+srv://nikunj:ZvvmPERkdR7Q4@cluster0.vhhko.mongodb.net/twitterclone?retryWrites=true&w=majority`;
+const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.vhhko.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`;
 
 const fileStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
