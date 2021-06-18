@@ -12,6 +12,11 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.vhhko.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`;
 
+const whitelistedDomains = [
+	'https://the-awesome-chirp.netlify.app',
+	'http://localhost:3000',
+];
+
 const fileStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, 'images');
@@ -33,7 +38,10 @@ const fileFilter = (req, file, cb) => {
 };
 
 app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+	const origin = req.get('origin');
+	if (whitelistedDomains.indexOf('origin') > -1) {
+		res.setHeader('Access-Control-Allow-Origin', origin);
+	}
 	res.setHeader(
 		'Access-Control-Allow-Methods',
 		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
