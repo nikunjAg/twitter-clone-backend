@@ -371,6 +371,8 @@ exports.replyPost = (req, res, next) => {
 			return parentPost.save();
 		})
 		.then((updatedParentPost) => {
+			replyPost.replyTo = updatedParentPost;
+			
 			return res.status(201).json({
 				message: 'Replied successfully',
 				post: replyPost,
