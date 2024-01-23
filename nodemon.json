@@ -1,7 +1,0 @@
-{
-	"env": {
-		"MONGO_USER": "nikunj",
-		"MONGO_PASSWORD": "ZvvmPERkdR7Q4",
-		"MONGO_DATABASE": "twitterclone"
-	}
-}
