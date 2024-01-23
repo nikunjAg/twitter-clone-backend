@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const path = require('path');
 
 const express = require('express');
@@ -76,7 +78,7 @@ mongoose
 		useUnifiedTopology: true,
 		useFindAndModify: false,
 	})
-	.then(() => {
+	.then((res) => {
 		app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
 	})
 	.catch((e) => {
